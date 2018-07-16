@@ -343,9 +343,9 @@ class CanvasComponent extends React.Component {
     constructor(props) {
         super(props);
         this.handleKeyDown = (e) => {
-            e.preventDefault();
             const keyCode = e.keyCode;
             if (keyCode >= 37 && keyCode <= 40) {
+                e.preventDefault();
                 this.props.onShapeStepped && this.props.onShapeStepped(this.getMoveDirection(e.keyCode));
             }
         };
@@ -528,10 +528,10 @@ exports.CanvasShape = react_dnd_1.DragSource(draggable_types_1.DraggableTypes.CA
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-class CanvasShapeConstants {
-}
-CanvasShapeConstants.STROKE_WIDTH = 2;
-exports.CanvasShapeConstants = CanvasShapeConstants;
+var CanvasShapeConstants;
+(function (CanvasShapeConstants) {
+    CanvasShapeConstants.STROKE_WIDTH = 2;
+})(CanvasShapeConstants = exports.CanvasShapeConstants || (exports.CanvasShapeConstants = {}));
 
 
 /***/ }),
@@ -700,12 +700,12 @@ class ControlPanelComponent extends React.Component {
     }
     render() {
         return (React.createElement("div", { className: "control-panel" },
-            React.createElement("img", { onClick: this.bringToFront, style: { width: "33%" }, src: "https://www.iconspng.com/uploads/mono-bring-stencil-to-front/mono-bring-stencil-to-front.png" }),
-            React.createElement("img", { onClick: this.moveStepUp, style: { width: "33%" }, src: "https://www.iconspng.com/uploads/aiga-up-arrow-bg/aiga-up-arrow-bg.png" }),
-            React.createElement("img", { onClick: this.sendToBack, style: { width: "33%" }, src: "https://www.iconspng.com/uploads/mono-send-stencil-to-back/mono-send-stencil-to-back.png" }),
-            React.createElement("img", { onClick: this.moveStepLeft, style: { width: "33%" }, src: "https://www.iconspng.com/uploads/aiga-left-arrow-bg/aiga-left-arrow-bg.png" }),
-            React.createElement("img", { onClick: this.moveStepDown, style: { width: "33%" }, src: "https://www.iconspng.com/uploads/aiga-down-arrow-bg/aiga-down-arrow-bg.png" }),
-            React.createElement("img", { onClick: this.moveStepRight, style: { width: "33%" }, src: "https://www.iconspng.com/uploads/aiga-right-arrow-bg/aiga-right-arrow-bg.png" })));
+            React.createElement("img", { onClick: this.bringToFront, style: { width: "33%" }, src: "public/icons/to_front.png" }),
+            React.createElement("img", { onClick: this.moveStepUp, style: { width: "33%" }, src: "public/icons/up.png" }),
+            React.createElement("img", { onClick: this.sendToBack, style: { width: "33%" }, src: "public/icons/to_back.png" }),
+            React.createElement("img", { onClick: this.moveStepLeft, style: { width: "33%" }, src: "public/icons/left.png" }),
+            React.createElement("img", { onClick: this.moveStepDown, style: { width: "33%" }, src: "public/icons/down.png" }),
+            React.createElement("img", { onClick: this.moveStepRight, style: { width: "33%" }, src: "public/icons/right.png" })));
     }
 }
 const mapDispatchToProps = {
