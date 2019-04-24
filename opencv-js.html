@@ -24,19 +24,25 @@ inputElement.addEventListener('change', (e) => {
   imgElement.src = URL.createObjectURL(e.target.files[0]);
 }, false);
 imgElement.onload = function() {
+  blurry(imgElement);
+};
+
+function blurry(imgElement)
+{
   let gray = new cv.Mat();
   let src = cv.imread(imgElement);
   cv.cvtColor(src, gray, cv.COLOR_BGR2GRAY)
   let blurness = new cv.Mat();
   cv.Laplacian(gray, blurness, cv.CV_64F)
   let variance = new cv.Mat();
-  let _meanStdDev = cv.meanStdDev(blurness, variance, new cv.Mat())
+  let _meanStdDev = cv.meanStdDev(blurness, new cv.Mat(), variance)
 
-  let _variation = Math.pow(variance.data[0], 2);
+  let _variation = variance.data64F[0];
   cv.putText(src, _variation.toString(), {x: 10, y: 30}, cv.FONT_HERSHEY_SIMPLEX, 1.0, [0, 255, 255, 255])
   cv.imshow('canvasOutput', src);
   src.delete();
-};
+}
+
 function onOpenCvReady() {
   document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
 }
